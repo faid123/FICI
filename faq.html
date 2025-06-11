@@ -1,0 +1,931 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FAQ | FICI | Freight Forwarding Experts</title>
+  <style>
+    /* === CSS CUSTOM PROPERTIES === */
+    :root {
+      --primary-navy: #003366;
+      --primary-blue: #0066cc;
+      --accent-orange: #ff6b35;
+      --neutral-light: #f8f9fa;
+      --neutral-gray: #e9ecef;
+      --text-dark: #2c3e50;
+      --text-gray: #6c757d;
+      --white: #ffffff;
+      --shadow-light: 0 2px 10px rgba(0,0,0,0.08);
+      --shadow-medium: 0 4px 20px rgba(0,0,0,0.12);
+      --shadow-strong: 0 8px 30px rgba(0,0,0,0.15);
+      --border-radius: 8px;
+      --transition: all 0.3s ease;
+    }
+
+    /* === RESET & BASE === */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      color: var(--text-dark);
+      background: var(--white);
+    }
+
+    /* === TYPOGRAPHY === */
+    h1 {
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 1rem;
+    }
+
+    h2 {
+      font-size: clamp(1.5rem, 4vw, 2.5rem);
+      font-weight: 600;
+      line-height: 1.3;
+      margin-bottom: 1rem;
+      color: var(--primary-navy);
+    }
+
+    h3 {
+      font-size: clamp(1.2rem, 3vw, 1.8rem);
+      font-weight: 600;
+      line-height: 1.4;
+      margin-bottom: 0.75rem;
+      color: var(--primary-navy);
+    }
+
+    h4 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      color: var(--white);
+    }
+
+    p {
+      margin-bottom: 1rem;
+      color: var(--text-gray);
+      font-size: 1.1rem;
+    }
+
+    /* === LAYOUT === */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 3rem;
+      align-items: start;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+    }
+
+    /* === HEADER === */
+    .site-header {
+      background: var(--white);
+      box-shadow: var(--shadow-light);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      padding: 1rem 0;
+    }
+
+    .header-content {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo img {
+      height: 70px;
+      width: auto;
+      transition: var(--transition);
+    }
+
+    .logo:hover img {
+      transform: scale(1.05);
+    }
+
+    .site-nav ul {
+      display: flex;
+      list-style: none;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .site-nav a {
+      text-decoration: none;
+      color: var(--text-dark);
+      font-weight: 500;
+      padding: 0.5rem 1rem;
+      border-radius: var(--border-radius);
+      transition: var(--transition);
+      position: relative;
+    }
+
+    .site-nav a:hover {
+      color: var(--primary-blue);
+      background: var(--neutral-light);
+    }
+
+    .site-nav a.active {
+      color: var(--primary-blue);
+      background: var(--neutral-light);
+    }
+
+    /* Mobile Menu */
+    .mobile-menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: var(--primary-navy);
+    }
+
+    /* === PAGE HEADER === */
+    .page-header {
+      background: 
+        linear-gradient(135deg, rgba(0, 51, 102, 0.9) 0%, rgba(0, 102, 204, 0.8) 100%),
+        url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover;
+      padding: 4rem 0;
+      text-align: center;
+      color: var(--white);
+    }
+
+    .page-header h1 {
+      color: var(--white);
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+      margin-bottom: 1rem;
+    }
+
+    .page-header p {
+      font-size: 1.2rem;
+      color: rgba(255, 255, 255, 0.9);
+      max-width: 600px;
+      margin: 0 auto;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+    }
+
+    /* === SECTIONS === */
+    .content-section {
+      padding: 5rem 0;
+    }
+
+    .bg-light {
+      background: var(--neutral-light);
+    }
+
+    /* === FAQ CATEGORIES === */
+    .faq-categories {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1rem;
+      margin-bottom: 3rem;
+    }
+
+    .category-tab {
+      background: var(--white);
+      border: 2px solid var(--neutral-gray);
+      color: var(--text-dark);
+      padding: 1rem 1.5rem;
+      text-align: center;
+      cursor: pointer;
+      border-radius: var(--border-radius);
+      transition: var(--transition);
+      font-weight: 600;
+    }
+
+    .category-tab:hover {
+      border-color: var(--primary-blue);
+      color: var(--primary-blue);
+    }
+
+    .category-tab.active {
+      background: var(--primary-blue);
+      color: var(--white);
+      border-color: var(--primary-blue);
+    }
+
+    /* === FAQ ACCORDION === */
+    .faq-section {
+      margin-bottom: 3rem;
+    }
+
+    .faq-section h3 {
+      margin-bottom: 2rem;
+      padding-bottom: 1rem;
+      border-bottom: 3px solid var(--accent-orange);
+      display: inline-block;
+    }
+
+    .faq-item {
+      background: var(--white);
+      border: 1px solid var(--neutral-gray);
+      border-radius: var(--border-radius);
+      margin-bottom: 1rem;
+      overflow: hidden;
+      box-shadow: var(--shadow-light);
+      transition: var(--transition);
+    }
+
+    .faq-item:hover {
+      box-shadow: var(--shadow-medium);
+    }
+
+    .faq-question {
+      background: none;
+      border: none;
+      width: 100%;
+      text-align: left;
+      padding: 1.5rem;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--primary-navy);
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: var(--transition);
+    }
+
+    .faq-question:hover {
+      background: var(--neutral-light);
+    }
+
+    .faq-question.active {
+      background: var(--primary-blue);
+      color: var(--white);
+    }
+
+    .faq-icon {
+      font-size: 1.2rem;
+      transition: var(--transition);
+    }
+
+    .faq-question.active .faq-icon {
+      transform: rotate(45deg);
+    }
+
+    .faq-answer {
+      padding: 0 1.5rem;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease, padding 0.3s ease;
+    }
+
+    .faq-answer.active {
+      padding: 1.5rem;
+      max-height: 500px;
+    }
+
+    .faq-answer p {
+      margin-bottom: 1rem;
+      line-height: 1.7;
+    }
+
+    .faq-answer ul {
+      margin-left: 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .faq-answer li {
+      color: var(--text-gray);
+      margin-bottom: 0.5rem;
+    }
+
+    /* === SEARCH BOX === */
+    .search-container {
+      max-width: 500px;
+      margin: 0 auto 3rem auto;
+      position: relative;
+    }
+
+    .search-input {
+      width: 100%;
+      padding: 1rem 1.5rem;
+      border: 2px solid var(--neutral-gray);
+      border-radius: var(--border-radius);
+      font-size: 1.1rem;
+      transition: var(--transition);
+    }
+
+    .search-input:focus {
+      outline: none;
+      border-color: var(--primary-blue);
+      box-shadow: 0 0 0 3px rgba(0, 102, 204, 0.1);
+    }
+
+    .search-icon {
+      position: absolute;
+      right: 1rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-gray);
+      font-size: 1.2rem;
+    }
+
+    /* === BUTTONS === */
+    .btn-primary {
+      display: inline-block;
+      background: linear-gradient(135deg, var(--primary-navy) 0%, var(--primary-blue) 100%);
+      color: var(--white);
+      padding: 1rem 2.5rem;
+      text-decoration: none;
+      border-radius: var(--border-radius);
+      font-weight: 600;
+      font-size: 1.1rem;
+      transition: var(--transition);
+      box-shadow: var(--shadow-medium);
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-strong);
+      background: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-navy) 100%);
+    }
+
+    /* === FOOTER === */
+    .site-footer {
+      background: var(--primary-navy);
+      color: var(--white);
+      padding: 3rem 0 2rem 0;
+    }
+
+    .site-footer h4 {
+      margin-bottom: 1rem;
+      color: var(--white);
+    }
+
+    .site-footer p {
+      color: #b8d4f0;
+      margin-bottom: 0.5rem;
+    }
+
+    .site-footer a {
+      color: #b8d4f0;
+      text-decoration: none;
+      transition: var(--transition);
+    }
+
+    .site-footer a:hover {
+      color: var(--white);
+    }
+
+    /* === RESPONSIVE === */
+    @media (max-width: 768px) {
+      .site-nav {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: var(--white);
+        box-shadow: var(--shadow-medium);
+        border-radius: 0 0 var(--border-radius) var(--border-radius);
+      }
+
+      .site-nav.active {
+        display: block;
+      }
+
+      .site-nav ul {
+        flex-direction: column;
+        padding: 1rem;
+        gap: 0;
+      }
+
+      .site-nav li {
+        width: 100%;
+      }
+
+      .site-nav a {
+        display: block;
+        padding: 1rem;
+        border-bottom: 1px solid var(--neutral-gray);
+      }
+
+      .mobile-menu-toggle {
+        display: block;
+      }
+
+      .header-content {
+        position: relative;
+      }
+
+      .page-header {
+        padding: 3rem 0;
+      }
+
+      .content-section {
+        padding: 3rem 0;
+      }
+
+      .faq-categories {
+        grid-template-columns: 1fr;
+      }
+
+      .container {
+        padding: 0 1rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .page-header {
+        padding: 2rem 0;
+      }
+      
+      .faq-question {
+        padding: 1rem;
+        font-size: 1rem;
+      }
+
+      .faq-answer.active {
+        padding: 1rem;
+      }
+    }
+
+    /* === ANIMATIONS === */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .faq-item {
+      animation: fadeInUp 0.6s ease-out;
+    }
+
+    /* === FOCUS STATES === */
+    .btn-primary:focus,
+    .faq-question:focus,
+    .category-tab:focus,
+    .site-nav a:focus {
+      outline: 2px solid var(--accent-orange);
+      outline-offset: 2px;
+    }
+
+    /* === HIDDEN CLASS === */
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <div class="header-content">
+        <a class="logo" href="index.html">
+          <img src="assets/FICI Logo enhanced.png" alt="FICI Logo" />
+        </a>
+        <nav class="site-nav" id="siteNav">
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="projects.html">Projects</a></li>
+            <li><a href="faq.html" class="active">FAQ</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </nav>
+        <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle mobile menu">
+          ☰
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-header">
+      <div class="container">
+        <h1>Frequently Asked Questions</h1>
+        <p>Find answers to common questions about our logistics services and operations</p>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <div class="container">
+        <div class="search-container">
+          <input type="text" class="search-input" id="searchInput" placeholder="Search FAQs...">
+          <span class="search-icon">🔍</span>
+        </div>
+        
+        <div class="container" style="margin-bottom: 2rem; text-align: center;">
+  <select id="goto-section" class="search-input" style="max-width: 300px;">
+    <option value="">Go to FAQ Section</option>
+    <option value="general">General Information</option>
+    <option value="services">Services</option>
+    <option value="shipping">Shipping & Logistics</option>
+    <option value="pricing">Pricing & Payment</option>
+  </select>
+</div>
+
+
+<!--        <div class="faq-categories">
+          <button class="category-tab active" data-category="all">All Questions</button>
+          <button class="category-tab" data-category="general">General</button>
+          <button class="category-tab" data-category="services">Services</button>
+          <button class="category-tab" data-category="shipping">Shipping</button>
+          <button class="category-tab" data-category="pricing">Pricing</button>
+        </div>-->
+
+        <!-- General Questions -->
+        <div class="faq-section" data-category="general">
+          <h3>🏢 General Information</h3>
+          
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>What is First Imperial Cargo, Inc. (FICI)?</span>
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>First Imperial Cargo, Inc. (FICI) is a wholly Filipino corporation established in April 1986 by Mr. Luis V. Vega. We are a leading logistics provider in the Philippines with over 35 years of experience in freight forwarding, customs brokerage, and comprehensive logistics solutions.</p>
+              <p>We have grown from a single office into an internationally recognized company with strategic partnerships worldwide, serving clients across the U.S., Canada, Europe, Middle East, and Asia Pacific regions.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>Where are your offices located?</span>
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>FICI has strategically located offices across the Philippines:</p>
+              <ul>
+                <li><strong>Manila:</strong> Our head office and primary operations center</li>
+                <li><strong>Lapu-Lapu City, Cebu:</strong> Established in 1992, serving Central Visayas</li>
+                <li><strong>Cavite EPZA, Rosario:</strong> Our first branch office established in 1989</li>
+                <li><strong>Davao:</strong> Southern Philippines operations center</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>What certifications and qualifications does FICI have?</span>
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>FICI holds several important certifications and qualifications:</p>
+              <ul>
+                <li>IATA (International Air Transport Association) qualified agent since 1989</li>
+                <li>Licensed customs brokerage services</li>
+                <li>Authorized freight forwarding operations</li>
+                <li>Bonded warehousing facilities</li>
+                <li>Marine insurance provider certification</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Services Questions -->
+        <div class="faq-section" data-category="services">
+          <h3>🚀 Services & Solutions</h3>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>What services does FICI offer?</span>
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>FICI provides comprehensive logistics solutions including:</p>
+              <ul>
+                <li>Export & Import Air Freight Forwarding</li>
+                <li>Export & Import Ocean Freight Forwarding</li>
+                <li>Break Bulk/Project Cargo Handling</li>
+                <li>Customs Brokerage</li>
+                <li>Door-to-Door Service</li>
+                <li>Packing & Crating</li>
+                <li>Marine Insurance</li>
+                <li>Warehousing</li>
+                <li>Domestic Freight Forwarding</li>
+                <li>Global Courier Express Service</li>
+                <li>Import License Services</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>Do you handle specialized or oversized cargo?</span>
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>Yes, we specialize in break bulk and project cargo handling. Our services include:</p>
+              <ul>
+                <li>Heavy lift and oversized cargo transport</li>
+                <li>Project cargo planning and coordination</li>
+                <li>Specialized equipment and rigging</li>
+                <li>Route surveys and feasibility studies</li>
+                <li>Multi-modal transportation solutions</li>
+              </ul>
+              <p>Our experienced team can handle complex logistics requirements for industrial equipment, machinery, and construction materials.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>Do you provide warehousing services?</span>
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>Yes, we offer comprehensive warehousing solutions including:</p>
+              <ul>
+                <li>Bonded and non-bonded warehousing facilities</li>
+                <li>Climate-controlled storage for sensitive goods</li>
+                <li>Advanced inventory management systems</li>
+                <li>Pick and pack services</li>
+                <li>Distribution and fulfillment services</li>
+              </ul>
+              <p>Our warehouses are strategically located to optimize your supply chain operations.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Shipping Questions -->
+        <div class="faq-section" data-category="shipping">
+          <h3>📦 Shipping & Logistics</h3>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>How long does international shipping take?</span>
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>Shipping times vary depending on the mode of transport and destination:</p>
+              <ul>
+                <li><strong>Air Freight:</strong> 2-7 days depending on destination and service type</li>
+                <li><strong>Ocean Freight:</strong> 7-45 days depending on route and vessel schedules</li>
+                <li><strong>Express Services:</strong> 1-3 days for urgent shipments</li>
+              </ul>
+              <p>We provide detailed transit time estimates based on your specific shipping requirements and destination.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>Can I track my shipment?</span>
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>Yes, we provide real-time tracking and monitoring for all shipments. You'll receive:</p>
+              <ul>
+                <li>Tracking numbers for all shipments</li>
+                <li>Regular status updates via email or SMS</li>
+                <li>Online tracking portal access</li>
+                <li>Milestone notifications (departure, arrival, customs clearance)</li>
+                <li>Proof of delivery documentation</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>What documentation is required for international shipping?</span>
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>Required documentation typically includes:</p>
+              <ul>
+                <li>Commercial Invoice</li>
+                <li>Packing List</li>
+                <li>Bill of Lading or Air Waybill</li>
+                <li>Certificate of Origin (if required)</li>
+                <li>Export/Import Permits or Licenses</li>
+                <li>Insurance Certificate</li>
+                <li>Other destination-specific requirements</li>
+              </ul>
+              <p>Our customs brokerage team will guide you through all documentation requirements to ensure smooth clearance.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>Do you handle customs clearance?</span>
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>Yes, we provide full customs brokerage services including:</p>
+              <ul>
+                <li>Import and export documentation preparation</li>
+                <li>Tariff classification and valuation</li>
+                <li>Duty and tax calculation</li>
+                <li>Regulatory compliance consulting</li>
+                <li>Pre-clearance and expedited processing</li>
+                <li>Customs examination coordination</li>
+              </ul>
+              <p>Our licensed customs brokers ensure compliance with all international trade regulations.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Pricing Questions -->
+        <div class="faq-section" data-category="pricing">
+          <h3>💰 Pricing & Payment</h3>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>How do you calculate shipping costs?</span>
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>Shipping costs are calculated based on several factors:</p>
+              <ul>
+                <li><strong>Weight and Dimensions:</strong> Actual weight vs. volumetric weight</li>
+                <li><strong>Origin and Destination:</strong> Distance and route complexity</li>
+                <li><strong>Mode of Transport:</strong> Air, sea, or multimodal</li>
+                <li><strong>Service Level:</strong> Standard, express, or specialized handling</li>
+                <li><strong>Additional Services:</strong> Insurance, packaging, customs clearance</li>
+                <li><strong>Fuel Surcharges:</strong> Current market rates</li>
+              </ul>
+              <p>Contact us for a detailed quote tailored to your specific requirements.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>What payment methods do you accept?</span>
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>We accept various payment methods for your convenience:</p>
+              <ul>
+                <li>Bank transfers (local and international)</li>
+                <li>Checks</li>
+                <li>Cash payments at our offices</li>
+                <li>Letter of Credit (for large shipments)</li>
+                <li>Credit terms for established corporate clients</li>
+              </ul>
+              <p>Payment terms can be discussed based on your business requirements and relationship with FICI.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>Do you offer insurance for shipments?</span>
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>Yes, we provide comprehensive marine insurance coverage including:</p>
+              <ul>
+                <li>All-risk cargo insurance coverage</li>
+                <li>Institute Cargo Clauses (A, B, C) options</li>
+                <li>War and strike coverage when needed</li>
+                <li>Claims handling and settlement assistance</li>
+                <li>Risk assessment and consultation</li>
+              </ul>
+              <p>Insurance coverage can be tailored to your specific cargo value and risk requirements.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>Are there any hidden fees?</span>
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>No, we believe in transparent pricing. All our quotes include:</p>
+              <ul>
+                <li>Detailed breakdown of all charges</li>
+                <li>Clear explanation of additional services</li>
+                <li>Current fuel surcharges and applicable fees</li>
+                <li>Customs duties and taxes (when applicable)</li>
+              </ul>
+              <p>Any additional charges that may arise during shipping (such as storage fees for delays) will be communicated and approved before application.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Contact CTA -->
+        <div style="text-align: center; margin-top: 4rem; padding: 3rem; background: var(--primary-navy); color: var(--white); border-radius:<a href="services.html" title="services"></a>
+          <h2 style="color: var(--white); margin-bottom: 1rem;">Still Have Questions?</h2>
+          <p style="font-size: 1.2rem; color: rgba(255, 255, 255, 0.9); margin-bottom: 2rem; max-width: 600px; margin-left: auto; margin-right: auto;">
+            Our logistics experts are ready to answer your specific questions and provide personalized solutions for your shipping needs.
+          </p>
+          <a href="contact.html" class="btn-primary">Contact Us Today</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="grid-3">
+        <div>
+          <h4>Contact Information</h4>
+          <p><a href="mailto:sales@firstimperialcargo.com">sales@firstimperialcargo.com</a></p>
+          <p><a href="tel:+6328833-1289">(632) 8833-1289</a></p>
+        </div>
+        <div>
+          <h4>Our Offices</h4>
+          <p>Manila | Cebu | Cavite | Davao</p>
+          <p>Serving the Philippines and beyond</p>
+        </div>
+        <div>
+          <h4>Follow Us</h4>
+          <p>© 2025 First Imperial Cargo, Inc.</p>
+          <p>All rights reserved</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile menu functionality
+    const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+    const siteNav = document.getElementById('siteNav');
+
+    mobileMenuToggle.addEventListener('click', function() {
+      siteNav.classList.toggle('active');
+      
+      // Update button text
+      if (siteNav.classList.contains('active')) {
+        mobileMenuToggle.textContent = '✕';
+        mobileMenuToggle.setAttribute('aria-expanded', 'true');
+      } else {
+        mobileMenuToggle.textContent = '☰';
+        mobileMenuToggle.setAttribute('aria-expanded', 'false');
+      }
+    });
+
+    // Close mobile menu when clicking on nav links
+    const navLinks = document.querySelectorAll('.site-nav a');
+    navLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        siteNav.classList.remove('active');
+        mobileMenuToggle.textContent = '☰';
+        mobileMenuToggle.setAttribute('aria-expanded', 'false');
+      });
+    });
+
+    // Close mobile menu when clicking outside
+    document.addEventListener('click', function(event) {
+      if (!event.target.closest('.site-header')) {
+        siteNav.classList.remove('active');
+        mobileMenuToggle.textContent = '☰';
+        mobileMenuToggle.setAttribute('aria-expanded', 'false');
+      }
+    });
+
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+    
+    // FAQ toggle logic
+  document.querySelectorAll('.faq-question').forEach(button => {
+    button.addEventListener('click', () => {
+      const answer = button.nextElementSibling;
+      const isActive = button.classList.contains('active');
+
+      // Close all
+      document.querySelectorAll('.faq-question').forEach(btn => btn.classList.remove('active'));
+      document.querySelectorAll('.faq-answer').forEach(ans => ans.classList.remove('active'));
+
+      // Toggle current
+      if (!isActive) {
+        button.classList.add('active');
+        answer.classList.add('active');
+      }
+    });
+  });
+  
+  document.getElementById('goto-section').addEventListener('change', function() {
+    const value = this.value;
+    if (value) {
+      const target = document.querySelector(`.faq-section[data-category="${value}"]`);
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
+  });
+  </script>

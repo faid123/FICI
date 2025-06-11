@@ -1,0 +1,900 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact Us | FICI | Freight Forwarding Experts</title>
+  <style>
+    /* === CSS CUSTOM PROPERTIES === */
+    :root {
+      --primary-navy: #003366;
+      --primary-blue: #0066cc;
+      --accent-orange: #ff6b35;
+      --neutral-light: #f8f9fa;
+      --neutral-gray: #e9ecef;
+      --text-dark: #2c3e50;
+      --text-gray: #6c757d;
+      --white: #ffffff;
+      --shadow-light: 0 2px 10px rgba(0,0,0,0.08);
+      --shadow-medium: 0 4px 20px rgba(0,0,0,0.12);
+      --shadow-strong: 0 8px 30px rgba(0,0,0,0.15);
+      --border-radius: 8px;
+      --transition: all 0.3s ease;
+    }
+
+    /* === RESET & BASE === */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      color: var(--text-dark);
+      background: var(--white);
+    }
+
+    /* === TYPOGRAPHY === */
+    h1 {
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 1rem;
+    }
+
+    h2 {
+      font-size: clamp(1.5rem, 4vw, 2.5rem);
+      font-weight: 600;
+      line-height: 1.3;
+      margin-bottom: 1rem;
+      color: var(--primary-navy);
+    }
+
+    h3 {
+      font-size: clamp(1.2rem, 3vw, 1.8rem);
+      font-weight: 600;
+      line-height: 1.4;
+      margin-bottom: 0.75rem;
+      color: var(--primary-navy);
+    }
+
+    h4 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      color: var(--primary-navy);
+    }
+
+    h5 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      color: var(--primary-blue);
+    }
+
+    p {
+      margin-bottom: 1rem;
+      color: var(--text-gray);
+      font-size: 1rem;
+    }
+
+    /* === LAYOUT === */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 3rem;
+      align-items: start;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+    }
+
+    .grid-4 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+    }
+
+    /* === HEADER === */
+    .site-header {
+      background: var(--white);
+      box-shadow: var(--shadow-light);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      padding: 1rem 0;
+    }
+
+    .header-content {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo img {
+      height: 70px;
+      width: auto;
+      transition: var(--transition);
+    }
+
+    .logo:hover img {
+      transform: scale(1.05);
+    }
+
+    .site-nav ul {
+      display: flex;
+      list-style: none;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .site-nav a {
+      text-decoration: none;
+      color: var(--text-dark);
+      font-weight: 500;
+      padding: 0.5rem 1rem;
+      border-radius: var(--border-radius);
+      transition: var(--transition);
+      position: relative;
+    }
+
+    .site-nav a:hover {
+      color: var(--primary-blue);
+      background: var(--neutral-light);
+    }
+
+    .site-nav a.active {
+      color: var(--primary-blue);
+      background: var(--neutral-light);
+    }
+
+    /* Mobile Menu */
+    .mobile-menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: var(--primary-navy);
+    }
+
+    /* === PAGE HEADER === */
+    .page-header {
+      background: 
+        linear-gradient(135deg, rgba(0, 51, 102, 0.9) 0%, rgba(0, 102, 204, 0.8) 100%),
+        url('https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover;
+      padding: 4rem 0;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .page-header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 51, 102, 0.1);
+      backdrop-filter: blur(0.5px);
+    }
+
+    .page-header-content {
+      position: relative;
+      z-index: 2;
+    }
+
+    .page-header h1 {
+      color: var(--white);
+      margin-bottom: 1rem;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    }
+
+    .page-header p {
+      font-size: 1.2rem;
+      color: rgba(255, 255, 255, 0.9);
+      max-width: 600px;
+      margin: 0 auto;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+    }
+
+    /* === SECTIONS === */
+    .content-section {
+      padding: 5rem 0;
+    }
+
+    .bg-light {
+      background: var(--neutral-light);
+    }
+
+    .bg-dark {
+      background: var(--primary-navy);
+      color: var(--white);
+    }
+
+    /* === CARDS === */
+    .contact-card {
+      background: var(--white);
+      padding: 2.5rem;
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow-light);
+      transition: var(--transition);
+      border: 2px solid transparent;
+      height: 100%;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .contact-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      opacity: 0.03;
+      transition: var(--transition);
+      z-index: 1;
+      background: url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80') center/cover;
+    }
+
+    .contact-card > * {
+      position: relative;
+      z-index: 2;
+    }
+
+    .contact-card:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-strong);
+      border-color: var(--primary-blue);
+    }
+
+    .contact-card:hover::before {
+      opacity: 0.05;
+    }
+
+    .contact-card h3 {
+      color: var(--primary-navy);
+      margin-bottom: 1.5rem;
+      font-size: 1.4rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .contact-card .location-badge {
+      background: linear-gradient(135deg, var(--primary-navy), var(--primary-blue));
+      color: var(--white);
+      padding: 0.3rem 0.8rem;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .contact-info {
+      margin-bottom: 1.5rem;
+    }
+
+    .contact-info p {
+      margin-bottom: 0.5rem;
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+
+    .contact-info strong {
+      color: var(--primary-navy);
+      font-weight: 600;
+    }
+
+    .contact-info a {
+      color: var(--primary-blue);
+      text-decoration: none;
+      transition: var(--transition);
+    }
+
+    .contact-info a:hover {
+      color: var(--accent-orange);
+    }
+
+    .executives {
+      border-top: 2px solid var(--neutral-gray);
+      padding-top: 1.5rem;
+    }
+
+    .executives h5 {
+      margin-bottom: 1rem;
+      color: var(--primary-blue);
+    }
+
+    .executive {
+      margin-bottom: 0.8rem;
+      padding: 0.5rem 0;
+      border-left: 3px solid var(--accent-orange);
+      padding-left: 1rem;
+      background: rgba(0, 102, 204, 0.02);
+      border-radius: 0 var(--border-radius) var(--border-radius) 0;
+    }
+
+    .executive-name {
+      font-weight: 600;
+      color: var(--primary-navy);
+      margin-bottom: 0.2rem;
+    }
+
+    .executive-title {
+      font-size: 0.9rem;
+      color: var(--text-gray);
+      font-style: italic;
+    }
+
+    /* === MAP SECTION === */
+    .map-section {
+      background: var(--white);
+      padding: 0;
+      border-radius: var(--border-radius);
+      overflow: hidden;
+      box-shadow: var(--shadow-medium);
+      margin: 2rem 0;
+    }
+
+    .map-header {
+      background: linear-gradient(135deg, var(--primary-navy), var(--primary-blue));
+      color: var(--white);
+      padding: 1.5rem;
+      text-align: center;
+    }
+
+    .map-header h3 {
+      color: var(--white);
+      margin-bottom: 0.5rem;
+    }
+
+    .map-container {
+      height: 450px;
+      position: relative;
+    }
+
+    .map-container iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      filter: grayscale(20%);
+      transition: var(--transition);
+    }
+
+    .map-container:hover iframe {
+      filter: grayscale(0%);
+    }
+
+    /* === QUICK CONTACT === */
+    .quick-contact {
+      background: linear-gradient(135deg, var(--primary-navy), var(--primary-blue));
+      color: var(--white);
+      padding: 3rem;
+      border-radius: var(--border-radius);
+      text-align: center;
+      box-shadow: var(--shadow-medium);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .quick-contact::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80') center/cover;
+      opacity: 0.1;
+      z-index: 1;
+    }
+
+    .quick-contact > * {
+      position: relative;
+      z-index: 2;
+    }
+
+    .quick-contact h3 {
+      color: var(--white);
+      margin-bottom: 1rem;
+    }
+
+    .quick-contact p {
+      color: rgba(255, 255, 255, 0.9);
+      margin-bottom: 2rem;
+      font-size: 1.1rem;
+    }
+
+    .contact-buttons {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn-contact {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(255, 255, 255, 0.2);
+      color: var(--white);
+      padding: 1rem 2rem;
+      text-decoration: none;
+      border-radius: var(--border-radius);
+      font-weight: 600;
+      transition: var(--transition);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+
+    .btn-contact:hover {
+      background: rgba(255, 255, 255, 0.3);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-medium);
+    }
+
+    /* === FOOTER === */
+    .site-footer {
+      background: var(--primary-navy);
+      color: var(--white);
+      padding: 3rem 0 2rem 0;
+    }
+
+    .site-footer h4 {
+      margin-bottom: 1rem;
+      color: var(--white);
+    }
+
+    .site-footer p {
+      color: #b8d4f0;
+      margin-bottom: 0.5rem;
+    }
+
+    .site-footer a {
+      color: #b8d4f0;
+      text-decoration: none;
+      transition: var(--transition);
+    }
+
+    .site-footer a:hover {
+      color: var(--white);
+    }
+
+    /* === RESPONSIVE === */
+    @media (max-width: 768px) {
+      .site-nav {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: var(--white);
+        box-shadow: var(--shadow-medium);
+        border-radius: 0 0 var(--border-radius) var(--border-radius);
+      }
+
+      .site-nav.active {
+        display: block;
+      }
+
+      .site-nav ul {
+        flex-direction: column;
+        padding: 1rem;
+        gap: 0;
+      }
+
+      .site-nav li {
+        width: 100%;
+      }
+
+      .site-nav a {
+        display: block;
+        padding: 1rem;
+        border-bottom: 1px solid var(--neutral-gray);
+      }
+
+      .mobile-menu-toggle {
+        display: block;
+      }
+
+      .header-content {
+        position: relative;
+      }
+
+      .page-header {
+        padding: 3rem 0;
+      }
+
+      .content-section {
+        padding: 3rem 0;
+      }
+
+      .grid-2,
+      .grid-3,
+      .grid-4 {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+
+      .container {
+        padding: 0 1rem;
+      }
+
+      .contact-buttons {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .btn-contact {
+        width: 100%;
+        max-width: 300px;
+        justify-content: center;
+      }
+
+      .map-container {
+        height: 300px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .page-header {
+        padding: 2rem 0;
+      }
+      
+      .contact-card,
+      .quick-contact {
+        padding: 2rem;
+      }
+    }
+
+    /* === ANIMATIONS === */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .contact-card,
+    .quick-contact,
+    .map-section {
+      animation: fadeInUp 0.6s ease-out;
+    }
+
+    /* === FOCUS STATES === */
+    .btn-contact:focus,
+    .site-nav a:focus {
+      outline: 2px solid var(--accent-orange);
+      outline-offset: 2px;
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <div class="header-content">
+        <a class="logo" href="index.html">
+          <img src="assets/FICI Logo enhanced.png" alt="FICI Logo" />
+        </a>
+        <nav class="site-nav" id="siteNav">
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="projects.html">Projects</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+            <li><a href="contact.html" class="active">Contact</a></li>
+          </ul>
+        </nav>
+        <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle mobile menu">
+          ☰
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-header">
+      <div class="container">
+        <div class="page-header-content">
+          <h1>Contact Us</h1>
+          <p>Get in touch with our experienced team across the Philippines. We're here to help with all your freight forwarding and logistics needs.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <div class="container">
+        <div class="quick-contact">
+          <h3>Ready to Get Started?</h3>
+          <p>Contact our team today for a consultation and discover how FICI can streamline your global logistics operations.</p>
+          <div class="contact-buttons">
+            <a href="mailto:sales@firstimperialcargo.com" class="btn-contact">
+              📧 Email Us
+            </a>
+            <a href="tel:+6328833-1289" class="btn-contact">
+              📞 Call Now
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section bg-light">
+      <div class="container">
+        <h2 style="text-align: center; margin-bottom: 3rem;">Our Offices Nationwide</h2>
+        
+        <!-- Manila Headquarters -->
+        <div class="contact-card" style="margin-bottom: 3rem;">
+          <h3>🏢 Manila <span class="location-badge">Headquarters</span></h3>
+          <div class="contact-info">
+            <p><strong>Address:</strong><br>
+            2nd Floor, First Imperial Cargo Bldg.<br>
+            113 Roxas Boulevard, Baclaran<br>
+            Parañaque, Metro Manila, Philippines</p>
+            
+            <p><strong>Mailing Address:</strong><br>
+            P.O BOX 7580 ADC<br>
+            Ninoy Aquino International Airport<br>
+            Philippines</p>
+            
+            <p><strong>Tel:</strong> <a href="tel:+6328833-1289">(632) 8833-1289</a></p>
+            <p><strong>Fax:</strong> (632) 8852-2557; 8832-7910</p>
+            <p><strong>Email:</strong> <a href="mailto:sales@firstimperialcargo.com">sales@firstimperialcargo.com</a></p>
+            <p><strong>Website:</strong> <a href="http://www.firstimperialcargo.com" target="_blank">www.firstimperialcargo.com</a></p>
+          </div>
+          
+          <div class="executives">
+            <h5>Key Personnel</h5>
+            <div class="executive">
+              <div class="executive-name">Luis V. Vega</div>
+              <div class="executive-title">President</div>
+            </div>
+            <div class="executive">
+              <div class="executive-name">Jose J. Vega</div>
+              <div class="executive-title">Vice President for Operations</div>
+            </div>
+            <div class="executive">
+              <div class="executive-name">Maria Del Carmen R. Vega</div>
+              <div class="executive-title">Treasurer / Legal Counsel</div>
+            </div>
+            <div class="executive">
+              <div class="executive-name">Lorenzo Ramon R. Vega</div>
+              <div class="executive-title">Senior Manager for Operations</div>
+            </div>
+            <div class="executive">
+              <div class="executive-name">Ma. Cristy J. Daday</div>
+              <div class="executive-title">Sales Director</div>
+            </div>
+            <div class="executive">
+              <div class="executive-name">Jenilo Paul R. Campilan</div>
+              <div class="executive-title">Licensed Customs Broker</div>
+            </div>
+            <div class="executive">
+              <div class="executive-name">Soledad M. Bagalay</div>
+              <div class="executive-title">Accounting Manager</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Manila HQ Map -->
+        <div class="map-section">
+          <div class="map-header">
+            <h3>📍 Manila Headquarters Location</h3>
+            <p>Visit us at our main office in Parañaque, Metro Manila</p>
+          </div>
+			  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3862.194527215885!2d120.99383429999999!3d14.530862899999997!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3397c953fb8a8171%3A0x3091af68160c33e2!2s113%20Roxas%20Blvd%2C%20Paranaque%20City%2C%201702%20Metro%20Manila%2C%20Philippines!5e0!3m2!1sen!2ssg!4v1749403587587!5m2!1sen!2ssg" width="1200" height="450" style="border:0;" 
+			  allowfullscreen="" 
+			  loading="lazy" 
+			  referrerpolicy="no-referrer-when-downgrade">
+			  </iframe>
+          </div>
+        </div>
+
+        <!-- Branch Offices -->
+        <h2 style="text-align: center; margin: 4rem 0 3rem 0;">Our Branch Offices</h2>
+        <div class="grid-3">
+          <!-- Cebu Branch -->
+          <div class="contact-card">
+            <h3>🏝️ Lapu-Lapu City, Cebu</h3>
+            <div class="contact-info">
+              <p><strong>Address:</strong><br>
+              Unit B&C Ground Floor<br>
+              BF Mactan Strip Annex Building<br>
+              M.L. Quezon Avenue, Pajo<br>
+              Lapu-lapu City, Cebu<br>
+              Philippines, 6015</p>
+              
+              <p><strong>Tel:</strong><br>
+              <a href="tel:+6332260-8809">(+6332) 260-8809</a> local 100<br>
+              <a href="tel:+6332260-8361">(+6332) 260-8361</a><br>
+              <a href="tel:+6332260-8172">(+6332) 260-8172</a></p>
+              
+              <p><strong>Fax:</strong> (+6332) 260-8531</p>
+              <p><strong>Email:</strong> <a href="mailto:boyet.quinanola@firstimperialcargo.com">boyet.quinanola@firstimperialcargo.com</a></p>
+            </div>
+            
+            <div class="executives">
+              <h5>Contact Person</h5>
+              <div class="executive">
+                <div class="executive-name">Mr. Boyet Quiñanola</div>
+                <div class="executive-title">Vice President for Vis-Min</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Cavite Branch -->
+          <div class="contact-card">
+            <h3>🏭 EPZA-Rosario, Cavite</h3>
+            <div class="contact-info">
+              <p><strong>Address:</strong><br>
+              Old Administration Bldg.<br>
+              Cavite Export Processing Zone Authority<br>
+              Rosario, Cavite</p>
+              
+              <p><strong>Tel:</strong> <a href="tel:046850-8977">(046) 850-8977</a></p>
+              <p><strong>Fax:</strong> (046) 437-6531</p>
+              <p><strong>Email:</strong> <a href="mailto:cavite@firstimperialcargo.com">cavite@firstimperialcargo.com</a></p>
+            </div>
+            
+            <div class="executives">
+              <h5>Contact Person</h5>
+              <div class="executive">
+                <div class="executive-name">Emy Ricafrente</div>
+                <div class="executive-title">Branch Manager</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Davao Branch -->
+          <div class="contact-card">
+            <h3>🌴 Davao Office</h3>
+            <div class="contact-info">
+              <p><strong>Address:</strong><br>
+              Unit Nos. 17 & 19<br>
+              Davao Airport View Commercial Complex<br>
+              Carlos P. Garcia Highway<br>
+              Buhangin Road, Davao City</p>
+              
+              <p><strong>Telefax:</strong> <a href="tel:082-8234-7173">082-8234-7173</a></p>
+              <p><strong>Email:</strong> <a href="mailto:davao@firstimperialcargo.com">davao@firstimperialcargo.com</a></p>
+            </div>
+            
+            <div class="executives">
+              <h5>Contact Person</h5>
+              <div class="executive">
+                <div class="executive-name">Mr. Boyet Quiñanola</div>
+                <div class="executive-title">Vice President for Vis-Min</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <div class="container">
+        <div style="text-align: center; padding: 2rem 0;">
+          <h3 style="color: var(--primary-navy); margin-bottom: 1rem;">Experience the FICI Difference</h3>
+          <p style="font-size: 1.1rem; color: var(--text-gray); max-width: 700px; margin: 0 auto;">
+            With over 35 years of expertise and strategically located offices across the Philippines, FICI is your trusted partner for comprehensive freight forwarding and logistics solutions. Contact any of our offices today to discuss your specific requirements.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="grid-3">
+        <div>
+          <h4>Contact Information</h4>
+          <p><a href="mailto:sales@firstimperialcargo.com">sales@firstimperialcargo.com</a></p>
+          <p><a href="tel:+6328833-1289">(632) 8833-1289</a></p>
+        </div>
+        <div>
+          <h4>Our Offices</h4>
+          <p>Manila | Cebu | Cavite | Davao</p>
+          <p>Serving the Philippines and beyond</p>
+        </div>
+        <div>
+          <h4>Follow Us</h4>
+          <p>© 2025 First Imperial Cargo, Inc.</p>
+          <p>All rights reserved</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile menu functionality
+    const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+    const siteNav = document.getElementById('siteNav');
+
+    mobileMenuToggle.addEventListener('click', function() {
+      siteNav.classList.toggle('active');
+      
+      // Update button text
+      if (siteNav.classList.contains('active')) {
+        mobileMenuToggle.textContent = '✕';
+        mobileMenuToggle.setAttribute('aria-expanded', 'true');
+      } else {
+        mobileMenuToggle.textContent = '☰';
+        mobileMenuToggle.setAttribute('aria-expanded', 'false');
+      }
+    });
+
+    // Close mobile menu when clicking on nav links
+    const navLinks = document.querySelectorAll('.site-nav a');
+    navLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        siteNav.classList.remove('active');
+        mobileMenuToggle.textContent = '☰';
+        mobileMenuToggle.setAttribute('aria-expanded', 'false');
+      });
+    });
+
+    // Close mobile menu when clicking outside
+    document.addEventListener('click', function(event) {
+      if (!event.target.closest('.site-header')) {
+        siteNav.classList.remove('active');
+        mobileMenuToggle.textContent = '☰';
+        mobileMenuToggle.setAttribute('aria-expanded', 'false');
+      }
+    });
+
+// Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+
+    // Animate timeline items on scroll
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.animationDelay = Math.random() * 0.3 + 's';
+          entry.target.classList.add('animate');
+        }
+      });
+    }, observerOptions);
+
+    // Observe timeline items and team members
+    document.querySelectorAll('.timeline-item, .team-member, .location-card').forEach(el => {
+      observer.observe(el);
+    });
+  </script>
+</body>
+</html>
