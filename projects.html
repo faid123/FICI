@@ -546,6 +546,71 @@
       outline: 2px solid var(--accent-orange);
       outline-offset: 2px;
     }
+	
+	.client-carousel {
+	  position: relative;
+	  overflow: hidden;
+	  margin-top: 2rem;
+	}
+
+	.carousel-track {
+	  display: flex;
+	  transition: transform 0.5s ease-in-out;
+	  will-change: transform;
+	}
+
+	.carousel-slide {
+	  flex: 0 0 100%;
+	  padding: 2rem;
+	  text-align: center;
+	}
+
+	.carousel-slide img {
+	  max-width: 200px;
+	  height: auto;
+	  margin-bottom: 1rem;
+	  border-radius: 8px;
+	  box-shadow: var(--shadow-light);
+	}
+
+	.carousel-slide h3 {
+	  margin-top: 1rem;
+	  color: var(--primary-navy);
+	}
+
+	.carousel-slide p {
+	  font-size: 1rem;
+	  color: var(--text-gray);
+	  margin-bottom: 1rem;
+	}
+
+	.carousel-nav {
+	  position: absolute;
+	  top: 50%;
+	  transform: translateY(-50%);
+	  background: var(--primary-blue);
+	  color: white;
+	  border: none;
+	  padding: 0.5rem 1rem;
+	  cursor: pointer;
+	  border-radius: 50%;
+	  font-size: 1.5rem;
+	  z-index: 10;
+	  transition: background 0.3s ease;
+	}
+
+	.carousel-nav:hover {
+	  background: var(--accent-orange);
+	}
+
+	.carousel-nav.prev {
+	  left: 10px;
+	}
+
+	.carousel-nav.next {
+	  right: 10px;
+	}
+
   </style>
 </head>
 <body>
@@ -608,12 +673,49 @@
 
     <section class="content-section">
       <div class="container">
-        <div class="featured-project">
+<!--         <div class="featured-project">
           <h2>🏗️ Flagship Project: Metro Manila Infrastructure Equipment Import</h2>
           <p>Successfully coordinated the import and delivery of heavy construction equipment for the Metro Manila subway project, involving 150+ containers from Germany, Japan, and South Korea. This complex project required specialized break bulk handling, customs coordination, and precise timing across multiple delivery phases.</p>
-        </div>
+        </div> -->
+			
+			  
+			  <div class="featured-project">
+				<h2 style="text-align:center;">Trusted by Industry Leaders</h2>
+				</div>
+				<section class="content-section bg-light">
+				<div class="container">
+				<div class="client-carousel">
+				  <div class="carousel-track">
+					<!-- Slide 1 -->
+					<div class="carousel-slide">
+					  <img src="assets/sumitomo.jpg" alt="Sumitomo Corp">
+					  <h3>Sumitomo Corporation</h3>
+					  <p>Infrastructure logistics support for LRT 2 and MRT 3 depots across Metro Manila.</p>
+					  <a href="sumitomo-projects.html" class="btn-secondary">Learn More</a>
+					</div>
+					<!-- Slide 2 -->
+					<div class="carousel-slide">
+					  <img src="assets/nestle.png" alt="Nestle Philippines">
+					  <h3>Nestlé Philippines</h3>
+					  <p>Nationwide delivery of food-grade and industrial cargo to multiple factory locations.</p>
+					  <a href="nestle-projects.html" class="btn-secondary">Learn More</a>
+					</div>
+					<!-- Slide 3 -->
+					<div class="carousel-slide">
+					  <img src="assets/kepco.jpg" alt="KEPCO Power Plant">
+					  <h3>KEPCO Power Plant</h3>
+					  <p>Transported power generation systems to Pililla, Rizal for national grid development.</p>
+					  <a href="kepco-projects.html" class="btn-secondary">Learn More</a>
+					</div>
+				  </div>
+				  <!-- Navigation -->
+				  <button class="carousel-nav prev">❮</button>
+				  <button class="carousel-nav next">❯</button>
+				</div>
+			  </div>
+			</section>
 
-        <div class="grid-2">
+ <!--        <div class="grid-2">
           <div class="project-card">
             <img src="https://images.unsplash.com/photo-1565008447742-97f6f38c985c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Automotive Parts Export" class="project-image" />
             <div class="project-content">
@@ -765,7 +867,7 @@
               <a href="contact.html" class="btn-secondary">Learn More</a>
             </div>
           </div>
-        </div>
+        </div> -->
 
         <div style="text-align: center; margin-top: 4rem; padding: 3rem; background: var(--neutral-light); border-radius: var(--border-radius);">
           <h2 style="color: var(--primary-navy); margin-bottom: 1rem;">Ready to Start Your Next Project?</h2>
@@ -850,6 +952,31 @@
         }
       });
     });
+	
+  const track = document.querySelector('.carousel-track');
+  const slides = Array.from(track.children);
+  const nextBtn = document.querySelector('.carousel-nav.next');
+  const prevBtn = document.querySelector('.carousel-nav.prev');
+  let currentSlide = 0;
+
+  function updateSlide(position) {
+    const slideWidth = slides[0].getBoundingClientRect().width;
+    track.style.transform = `translateX(-${slideWidth * position}px)`;
+  }
+
+  nextBtn.addEventListener('click', () => {
+    currentSlide = (currentSlide + 1) % slides.length;
+    updateSlide(currentSlide);
+  });
+
+  prevBtn.addEventListener('click', () => {
+    currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+    updateSlide(currentSlide);
+  });
+
+  // Responsive adjustment on window resize
+  window.addEventListener('resize', () => updateSlide(currentSlide));
+
   </script>
 </body>
 </html>
