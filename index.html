@@ -357,11 +357,11 @@
     }
 
     .feature:nth-child(1)::before {
-      background: url('https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80') center/cover;
+      background: url('assets/celebration.png') center/cover;
     }
 
     .feature:nth-child(2)::before {
-      background: url('https://images.unsplash.com/photo-1540979388789-6cee28a1cdc9?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80') center/cover;
+      background: url('assets/iatabg.png') center/cover;
     }
 
     .feature:nth-child(3)::before {
@@ -493,19 +493,19 @@
 
     /* === PLACEHOLDER IMAGE === */
     .placeholder-img {
-      background: 
-        linear-gradient(135deg, rgba(0, 51, 102, 0.3) 0%, rgba(0, 102, 204, 0.2) 100%),
-        url('https://images.unsplash.com/photo-1600880292203-757bb62b4baf?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80') center/cover;
-      height: 300px;
-      border-radius: var(--border-radius);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--white);
-      font-size: 1.1rem;
-      position: relative;
-      overflow: hidden;
-    }
+	  background: 
+		linear-gradient(135deg, rgba(0, 51, 102, 0.3) 0%, rgba(0, 102, 204, 0.2) 100%),
+		url('assets/index-bg-1.jpg') center/cover;
+	  height: 300px;
+	  border-radius: var(--border-radius);
+	  display: flex;
+	  align-items: center;
+	  justify-content: center;
+	  color: var(--white);
+	  font-size: 1.1rem;
+	  position: relative;
+	  overflow: hidden;
+	}
 
     .placeholder-img::before {
       content: '';
@@ -657,6 +657,108 @@
       outline: 2px solid var(--accent-orange);
       outline-offset: 2px;
     }
+	
+.accreditation-logos-wrapper {
+  margin-top: 3rem;
+  text-align: center;
+}
+
+.featured-logos {
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.logo-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 8px;
+  background: #fff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  transition: box-shadow 0.3s ease;
+  max-width: 180px;
+}
+
+.logo-block:hover {
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+}
+
+.logo-block img {
+  height: 100px;
+  object-fit: contain;
+  margin-bottom: 0.5rem;
+}
+
+.logo-label {
+  font-size: 0.8rem;
+  color: #333;
+  text-align: center;
+}
+
+.other-logos {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.other-logos img {
+  height: 60px;
+  max-width: 120px;
+  object-fit: contain;
+  opacity: 0.9;
+  transition: transform 0.3s ease;
+}
+
+.other-logos img:hover {
+  transform: scale(1.05);
+  opacity: 1;
+}
+
+/* === TRUSTED CLIENTS === */
+
+.trusted-clients {
+  text-align: center;
+  margin-top: 3rem;
+}
+
+.trusted-title {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--primary-navy);
+  margin-bottom: 1.5rem;
+}
+
+
+.client-logos {
+  display: flex;
+  justify-content: center;
+  gap: 3rem; /* wider spacing between logos */
+  flex-wrap: wrap;
+  margin-bottom: 3rem; /* add space below logos */
+}
+
+.client-logos img {
+  height: 70px; /* increased size */
+  max-width: 120px;
+  object-fit: contain;
+  opacity: 0.9;
+  transition: transform 0.3s ease;
+}
+
+.client-logos img:hover {
+  transform: scale(1.05);
+  opacity: 1;
+}
+
+
+
+
   </style>
 </head>
 <body>
@@ -710,14 +812,22 @@
     <section class="content-section bg-light">
       <div class="container">
         <h2 style="text-align: center; margin-bottom: 3rem;">Why Choose FICI</h2>
+		<div class="trusted-clients">
+		  <h3 class="trusted-title">Trusted by Clients</h3>
+		  <div class="client-logos">
+			<img src="assets/nestle-logo.png" alt="Nestle" />
+			<img src="assets/sumitomo-logo.png" alt="Sumitomo" />
+			<img src="assets/kepco-logo.jpg" alt="KEPCO" />
+		  </div>
+		</div>
         <div class="grid-5">
           <div class="feature">
-            <h3>Over 35 Years in Operation</h3>
-            <p>Decades of proven expertise in global logistics and freight forwarding</p>
+            <!-- <h3>Over 35 Years in Operation</h3>
+            <p>Decades of proven expertise in global logistics and freight forwarding</p> -->
           </div>
           <div class="feature">
-            <h3>IATA Certified</h3>
-            <p>Internationally accredited and trusted by global aviation standards</p>
+            <!-- <h3>IATA Certified</h3>
+            <p>Internationally accredited and trusted by global aviation standards</p> -->
           </div>
           <div class="feature">
             <h3>Strategic Nationwide Branches</h3>
@@ -786,7 +896,7 @@
           </p>
         </div>
         
-        <div class="accreditations-showcase">
+        <!-- <div class="accreditations-showcase">
           <div class="accreditation-card featured">
             <div class="accreditation-image">
               <img src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="IATA Certification" />
@@ -889,7 +999,33 @@
               </div>
             </div>
           </div>
-        </div>
+        </div> -->
+		<div class="accreditation-logos-wrapper">
+		  <!-- Featured Logos -->
+		  <div class="featured-logos">
+			<div class="logo-block">
+			  <img src="assets/accreditations/iata.jpg" alt="IATA" />
+			  <div class="logo-label">International Air Transport Association (IATA)</div>
+			</div>
+			<div class="logo-block">
+			  <img src="assets/accreditations/epza.jpg" alt="PEZA" />
+			  <div class="logo-label">Philippine Economic Zone Authority (PEZA)</div>
+			</div>
+		  </div>
+
+		  <!-- Regular Logos -->
+		  <div class="other-logos">
+			<img src="assets/accreditations/cab.jpg" alt="CAB" />
+			<img src="assets/accreditations/ccbi.png" alt="CCBI" />
+			<img src="assets/accreditations/ctap.jpg" alt="CTAP" />
+			<img src="assets/accreditations/fteb.jpg" alt="FTEB" />
+			<img src="assets/accreditations/iccpi.jpg" alt="ICCPI" />
+			<img src="assets/accreditations/philexport.jpg" alt="PHILEXPORT" />
+			<img src="assets/accreditations/pmtlai.jpg" alt="PMTLAI" />
+			<img src="assets/accreditations/psb.jpg" alt="PSB" />
+		  </div>
+		</div>
+
       </div>
     </section>
   </main>
