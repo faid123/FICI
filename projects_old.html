@@ -1,0 +1,982 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Projects | FICI Freight Forwarding Experts</title>
+  <style>
+    /* === CSS CUSTOM PROPERTIES === */
+    :root {
+      --primary-navy: #003366;
+      --primary-blue: #0066cc;
+      --accent-orange: #ff6b35;
+      --neutral-light: #f8f9fa;
+      --neutral-gray: #e9ecef;
+      --text-dark: #2c3e50;
+      --text-gray: #6c757d;
+      --white: #ffffff;
+      --shadow-light: 0 2px 10px rgba(0,0,0,0.08);
+      --shadow-medium: 0 4px 20px rgba(0,0,0,0.12);
+      --shadow-strong: 0 8px 30px rgba(0,0,0,0.15);
+      --border-radius: 8px;
+      --transition: all 0.3s ease;
+    }
+
+    /* === RESET & BASE === */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      color: var(--text-dark);
+      background: var(--white);
+    }
+
+    /* === TYPOGRAPHY === */
+    h1 {
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 1rem;
+    }
+
+    h2 {
+      font-size: clamp(1.5rem, 4vw, 2.5rem);
+      font-weight: 600;
+      line-height: 1.3;
+      margin-bottom: 1rem;
+      color: var(--primary-navy);
+    }
+
+    h3 {
+      font-size: clamp(1.2rem, 3vw, 1.8rem);
+      font-weight: 600;
+      line-height: 1.4;
+      margin-bottom: 0.75rem;
+      color: var(--primary-navy);
+    }
+
+    h4 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      color: var(--white);
+    }
+
+    p {
+      margin-bottom: 1rem;
+      color: var(--text-gray);
+      font-size: 1.1rem;
+    }
+
+    /* === LAYOUT === */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 3rem;
+      align-items: start;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+    }
+
+    /* === HEADER === */
+    .site-header {
+      background: var(--white);
+      box-shadow: var(--shadow-light);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      padding: 1rem 0;
+    }
+
+    .header-content {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo img {
+      height: 70px;
+      width: auto;
+      transition: var(--transition);
+    }
+
+    .logo:hover img {
+      transform: scale(1.05);
+    }
+
+    .site-nav ul {
+      display: flex;
+      list-style: none;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .site-nav a {
+      text-decoration: none;
+      color: var(--text-dark);
+      font-weight: 500;
+      padding: 0.5rem 1rem;
+      border-radius: var(--border-radius);
+      transition: var(--transition);
+      position: relative;
+    }
+
+    .site-nav a:hover {
+      color: var(--primary-blue);
+      background: var(--neutral-light);
+    }
+
+    .site-nav a.active {
+      color: var(--primary-blue);
+      background: var(--neutral-light);
+    }
+
+    /* Mobile Menu */
+    .mobile-menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: var(--primary-navy);
+    }
+
+    /* === HERO SECTION === */
+    .hero-banner {
+      background: 
+        linear-gradient(135deg, rgba(0, 51, 102, 0.8) 0%, rgba(0, 102, 204, 0.7) 100%),
+        url('https://images.unsplash.com/photo-1578575437130-527eed3abbec?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover;
+      padding: 4rem 0;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-banner::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 51, 102, 0.1);
+      backdrop-filter: blur(0.5px);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-banner h1 {
+      color: var(--white);
+      margin-bottom: 1rem;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    }
+
+    .hero-banner p {
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+      color: rgba(255, 255, 255, 0.9);
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+    }
+
+    /* === BUTTONS === */
+    .btn-primary {
+      display: inline-block;
+      background: linear-gradient(135deg, var(--primary-navy) 0%, var(--primary-blue) 100%);
+      color: var(--white);
+      padding: 1rem 2.5rem;
+      text-decoration: none;
+      border-radius: var(--border-radius);
+      font-weight: 600;
+      font-size: 1.1rem;
+      transition: var(--transition);
+      box-shadow: var(--shadow-medium);
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-strong);
+      background: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-navy) 100%);
+    }
+
+    .btn-secondary {
+      display: inline-block;
+      background: transparent;
+      color: var(--primary-blue);
+      padding: 0.8rem 2rem;
+      text-decoration: none;
+      border: 2px solid var(--primary-blue);
+      border-radius: var(--border-radius);
+      font-weight: 600;
+      font-size: 1rem;
+      transition: var(--transition);
+      margin-top: 1rem;
+    }
+
+    .btn-secondary:hover {
+      background: var(--primary-blue);
+      color: var(--white);
+      transform: translateY(-1px);
+      box-shadow: var(--shadow-medium);
+    }
+
+    /* === SECTIONS === */
+    .content-section {
+      padding: 5rem 0;
+    }
+
+    .bg-light {
+      background: var(--neutral-light);
+    }
+
+    /* === PROJECT CARDS === */
+    .project-card {
+      background: var(--white);
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow-light);
+      transition: var(--transition);
+      overflow: hidden;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .project-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-strong);
+    }
+
+    .project-image {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      transition: var(--transition);
+    }
+
+    .project-card:hover .project-image {
+      transform: scale(1.05);
+    }
+
+    .project-content {
+      padding: 2rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .project-meta {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 1rem;
+      font-size: 0.9rem;
+    }
+
+    .project-tag {
+      background: var(--accent-orange);
+      color: var(--white);
+      padding: 0.3rem 0.8rem;
+      border-radius: 20px;
+      font-weight: 500;
+      font-size: 0.8rem;
+    }
+
+    .project-date {
+      color: var(--text-gray);
+      font-weight: 500;
+    }
+
+    .project-card h3 {
+      color: var(--primary-navy);
+      margin-bottom: 1rem;
+      font-size: 1.4rem;
+    }
+
+    .project-card p {
+      color: var(--text-gray);
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+      flex: 1;
+    }
+
+    .project-highlights {
+      list-style: none;
+      padding: 0;
+      margin-bottom: 1.5rem;
+    }
+
+    .project-highlights li {
+      color: var(--text-gray);
+      margin-bottom: 0.5rem;
+      padding-left: 1.5rem;
+      position: relative;
+      font-size: 0.95rem;
+    }
+
+    .project-highlights li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: var(--accent-orange);
+      font-weight: bold;
+    }
+
+    /* === FEATURED PROJECT === */
+    .featured-project {
+      background: linear-gradient(135deg, var(--primary-navy) 0%, var(--primary-blue) 100%);
+      color: var(--white);
+      grid-column: 1 / -1;
+      padding: 3rem;
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .featured-project h2 {
+      color: var(--white);
+      margin-bottom: 1rem;
+    }
+
+    .featured-project p {
+      color: rgba(255, 255, 255, 0.9);
+      font-size: 1.2rem;
+      max-width: 800px;
+      margin: 0 auto 2rem auto;
+    }
+
+    /* === STATS SECTION === */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+      margin: 3rem 0;
+    }
+
+    .stat-item {
+      text-align: center;
+      padding: 2rem;
+      background: var(--white);
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow-light);
+    }
+
+    .stat-number {
+      font-size: 3rem;
+      font-weight: 700;
+      color: var(--accent-orange);
+      margin-bottom: 0.5rem;
+      display: block;
+    }
+
+    .stat-label {
+      color: var(--text-gray);
+      font-weight: 500;
+    }
+
+    /* === FOOTER === */
+    .site-footer {
+      background: var(--primary-navy);
+      color: var(--white);
+      padding: 3rem 0 2rem 0;
+    }
+
+    .site-footer h4 {
+      margin-bottom: 1rem;
+      color: var(--white);
+    }
+
+    .site-footer p {
+      color: #b8d4f0;
+      margin-bottom: 0.5rem;
+    }
+
+    .site-footer a {
+      color: #b8d4f0;
+      text-decoration: none;
+      transition: var(--transition);
+    }
+
+    .site-footer a:hover {
+      color: var(--white);
+    }
+
+    /* === RESPONSIVE === */
+    @media (max-width: 768px) {
+      .site-nav {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: var(--white);
+        box-shadow: var(--shadow-medium);
+        border-radius: 0 0 var(--border-radius) var(--border-radius);
+      }
+
+      .site-nav.active {
+        display: block;
+      }
+
+      .site-nav ul {
+        flex-direction: column;
+        padding: 1rem;
+        gap: 0;
+      }
+
+      .site-nav li {
+        width: 100%;
+      }
+
+      .site-nav a {
+        display: block;
+        padding: 1rem;
+        border-bottom: 1px solid var(--neutral-gray);
+      }
+
+      .mobile-menu-toggle {
+        display: block;
+      }
+
+      .header-content {
+        position: relative;
+      }
+
+      .hero-banner {
+        padding: 3rem 0;
+      }
+
+      .content-section {
+        padding: 3rem 0;
+      }
+
+      .grid-2,
+      .grid-3 {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+
+      .featured-project {
+        grid-column: 1;
+        padding: 2rem;
+      }
+
+      .project-content {
+        padding: 1.5rem;
+      }
+
+      .container {
+        padding: 0 1rem;
+      }
+
+      .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+      }
+
+      .stat-item {
+        padding: 1.5rem;
+      }
+
+      .stat-number {
+        font-size: 2.5rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero-banner {
+        padding: 2rem 0;
+      }
+      
+      .project-content {
+        padding: 1.5rem;
+      }
+
+      .featured-project {
+        padding: 1.5rem;
+      }
+
+      .stats-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* === ANIMATIONS === */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .hero-content,
+    .project-card,
+    .featured-project,
+    .stat-item {
+      animation: fadeInUp 0.6s ease-out;
+    }
+
+    /* === FOCUS STATES === */
+    .btn-primary:focus,
+    .btn-secondary:focus,
+    .site-nav a:focus {
+      outline: 2px solid var(--accent-orange);
+      outline-offset: 2px;
+    }
+	
+	.client-carousel {
+	  position: relative;
+	  overflow: hidden;
+	  margin-top: 2rem;
+	}
+
+	.carousel-track {
+	  display: flex;
+	  transition: transform 0.5s ease-in-out;
+	  will-change: transform;
+	}
+
+	.carousel-slide {
+	  flex: 0 0 100%;
+	  padding: 2rem;
+	  text-align: center;
+	}
+
+	.carousel-slide img {
+	  max-width: 200px;
+	  height: auto;
+	  margin-bottom: 1rem;
+	  border-radius: 8px;
+	  box-shadow: var(--shadow-light);
+	}
+
+	.carousel-slide h3 {
+	  margin-top: 1rem;
+	  color: var(--primary-navy);
+	}
+
+	.carousel-slide p {
+	  font-size: 1rem;
+	  color: var(--text-gray);
+	  margin-bottom: 1rem;
+	}
+
+	.carousel-nav {
+	  position: absolute;
+	  top: 50%;
+	  transform: translateY(-50%);
+	  background: var(--primary-blue);
+	  color: white;
+	  border: none;
+	  padding: 0.5rem 1rem;
+	  cursor: pointer;
+	  border-radius: 50%;
+	  font-size: 1.5rem;
+	  z-index: 10;
+	  transition: background 0.3s ease;
+	}
+
+	.carousel-nav:hover {
+	  background: var(--accent-orange);
+	}
+
+	.carousel-nav.prev {
+	  left: 10px;
+	}
+
+	.carousel-nav.next {
+	  right: 10px;
+	}
+
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <div class="header-content">
+        <a class="logo" href="index.html">
+          <img src="assets/FICI Logo enhanced.png" alt="FICI Logo" />
+        </a>
+        <nav class="site-nav" id="siteNav">
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="projects.html" class="active">Projects</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </nav>
+        <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle mobile menu">
+          ☰
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero-banner">
+      <div class="container">
+        <div class="hero-content">
+          <h1>Our Success Stories</h1>
+          <p>Explore our portfolio of successful logistics projects that showcase our expertise in handling complex supply chain challenges across various industries.</p>
+          <a href="contact.html" class="btn-primary">Partner With Us</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section bg-light">
+      <div class="container">
+        <div class="stats-grid">
+          <div class="stat-item">
+            <span class="stat-number">500+</span>
+            <span class="stat-label">Projects Completed</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number">35+</span>
+            <span class="stat-label">Years Experience</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number">50+</span>
+            <span class="stat-label">Countries Served</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number">99.8%</span>
+            <span class="stat-label">On-Time Delivery</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <div class="container">
+<!--         <div class="featured-project">
+          <h2>🏗️ Flagship Project: Metro Manila Infrastructure Equipment Import</h2>
+          <p>Successfully coordinated the import and delivery of heavy construction equipment for the Metro Manila subway project, involving 150+ containers from Germany, Japan, and South Korea. This complex project required specialized break bulk handling, customs coordination, and precise timing across multiple delivery phases.</p>
+        </div> -->
+			
+			  
+			  <div class="featured-project">
+				<h2 style="text-align:center;">Trusted by Industry Leaders</h2>
+				</div>
+				<section class="content-section bg-light">
+				<div class="container">
+				<div class="client-carousel">
+				  <div class="carousel-track">
+					<!-- Slide 1 -->
+					<div class="carousel-slide">
+					  <img src="assets/sumitomo.jpg" alt="Sumitomo Corp">
+					  <h3>Sumitomo Corporation</h3>
+					  <p>Infrastructure logistics support for LRT 2 and MRT 3 depots across Metro Manila.</p>
+					  <a href="sumitomo-projects.html" class="btn-secondary">Learn More</a>
+					</div>
+					<!-- Slide 2 -->
+					<div class="carousel-slide">
+					  <img src="assets/nestle.png" alt="Nestle Philippines">
+					  <h3>Nestlé Philippines</h3>
+					  <p>Nationwide delivery of food-grade and industrial cargo to multiple factory locations.</p>
+					  <a href="nestle-projects.html" class="btn-secondary">Learn More</a>
+					</div>
+					<!-- Slide 3 -->
+					<div class="carousel-slide">
+					  <img src="assets/kepco.jpg" alt="KEPCO Power Plant">
+					  <h3>KEPCO Power Plant</h3>
+					  <p>Transported power generation systems to Pililla, Rizal for national grid development.</p>
+					  <a href="kepco-projects.html" class="btn-secondary">Learn More</a>
+					</div>
+				  </div>
+				  <!-- Navigation -->
+				  <button class="carousel-nav prev">❮</button>
+				  <button class="carousel-nav next">❯</button>
+				</div>
+			  </div>
+			</section>
+
+ <!--        <div class="grid-2">
+          <div class="project-card">
+            <img src="https://images.unsplash.com/photo-1565008447742-97f6f38c985c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Automotive Parts Export" class="project-image" />
+            <div class="project-content">
+              <div class="project-meta">
+                <span class="project-tag">Automotive</span>
+                <span class="project-date">2024</span>
+              </div>
+              <h3>Philippine Auto Parts Export to ASEAN</h3>
+              <p>Managed the logistics for a major automotive manufacturer's expansion into Southeast Asian markets, handling time-sensitive shipments of precision components and just-in-time delivery requirements.</p>
+              <ul class="project-highlights">
+                <li>25,000+ auto parts shipped monthly</li>
+                <li>98.5% on-time delivery rate achieved</li>
+                <li>Temperature-controlled logistics</li>
+                <li>Real-time tracking implementation</li>
+              </ul>
+              <a href="contact.html" class="btn-secondary">Learn More</a>
+            </div>
+          </div>
+
+          <div class="project-card">
+            <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Electronics Manufacturing" class="project-image" />
+            <div class="project-content">
+              <div class="project-meta">
+                <span class="project-tag">Electronics</span>
+                <span class="project-date">2024</span>
+              </div>
+              <h3>Semiconductor Equipment Import Project</h3>
+              <p>Coordinated the import of highly sensitive semiconductor manufacturing equipment from Taiwan and South Korea, requiring specialized handling and clean room delivery protocols.</p>
+              <ul class="project-highlights">
+                <li>$50M+ equipment value handled</li>
+                <li>Zero damage record maintained</li>
+                <li>Clean room delivery protocols</li>
+                <li>24/7 security monitoring</li>
+              </ul>
+              <a href="contact.html" class="btn-secondary">Learn More</a>
+            </div>
+          </div>
+
+          <div class="project-card">
+            <img src="https://images.unsplash.com/photo-1574263867128-e341b2b5bf61?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Food Export" class="project-image" />
+            <div class="project-content">
+              <div class="project-meta">
+                <span class="project-tag">Food & Beverage</span>
+                <span class="project-date">2023-2024</span>
+              </div>
+              <h3>Premium Food Products Export Initiative</h3>
+              <p>Established cold chain logistics for Philippine premium food exporters, connecting local producers to international markets in North America and Europe with strict quality standards.</p>
+              <ul class="project-highlights">
+                <li>Cold chain logistics established</li>
+                <li>FDA and EU compliance achieved</li>
+                <li>15+ countries market access</li>
+                <li>Organic certification handling</li>
+              </ul>
+              <a href="contact.html" class="btn-secondary">Learn More</a>
+            </div>
+          </div>
+
+          <div class="project-card">
+            <img src="https://images.unsplash.com/photo-1559827260-dc66d52bef19?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Medical Equipment" class="project-image" />
+            <div class="project-content">
+              <div class="project-meta">
+                <span class="project-tag">Healthcare</span>
+                <span class="project-date">2023</span>
+              </div>
+              <h3>Emergency Medical Equipment Distribution</h3>
+              <p>Rapidly deployed logistics solutions during the healthcare equipment shortage, coordinating urgent imports of ventilators, PPE, and diagnostic equipment from multiple global suppliers.</p>
+              <ul class="project-highlights">
+                <li>Express clearance procedures</li>
+                <li>Temperature-sensitive handling</li>
+                <li>Multi-supplier coordination</li>
+                <li>Emergency delivery protocols</li>
+              </ul>
+              <a href="contact.html" class="btn-secondary">Learn More</a>
+            </div>
+          </div>
+
+          <div class="project-card">
+            <img src="https://images.unsplash.com/photo-1578575437130-527eed3abbec?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Mining Equipment" class="project-image" />
+            <div class="project-content">
+              <div class="project-meta">
+                <span class="project-tag">Mining</span>
+                <span class="project-date">2023</span>
+              </div>
+              <h3>Heavy Mining Equipment Transport</h3>
+              <p>Managed the transportation of oversized mining equipment to remote locations in Northern Luzon, involving specialized heavy-lift vessels, custom rigging, and challenging inland transport.</p>
+              <ul class="project-highlights">
+                <li>500+ ton equipment handled</li>
+                <li>Remote location delivery</li>
+                <li>Custom rigging solutions</li>
+                <li>Environmental compliance</li>
+              </ul>
+              <a href="contact.html" class="btn-secondary">Learn More</a>
+            </div>
+          </div>
+
+          <div class="project-card">
+            <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Technology Import" class="project-image" />
+            <div class="project-content">
+              <div class="project-meta">
+                <span class="project-tag">Technology</span>
+                <span class="project-date">2022-2023</span>
+              </div>
+              <h3>Data Center Infrastructure Project</h3>
+              <p>Coordinated the import and installation logistics for a major data center expansion, handling servers, cooling systems, and network equipment with precise timing and security requirements.</p>
+              <ul class="project-highlights">
+                <li>Mission-critical equipment</li>
+                <li>24/7 security protocols</li>
+                <li>Precision timing coordination</li>
+                <li>Installation support services</li>
+              </ul>
+              <a href="contact.html" class="btn-secondary">Learn More</a>
+            </div>
+          </div>
+
+          <div class="project-card">
+            <img src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Renewable Energy" class="project-image" />
+            <div class="project-content">
+              <div class="project-meta">
+                <span class="project-tag">Renewable Energy</span>
+                <span class="project-date">2022</span>
+              </div>
+              <h3>Solar Farm Equipment Import</h3>
+              <p>Successfully managed the logistics for the Philippines' largest solar farm project, coordinating the import of solar panels, inverters, and mounting systems from multiple international suppliers.</p>
+              <ul class="project-highlights">
+                <li>1 GW solar capacity equipment</li>
+                <li>Multi-phase delivery schedule</li>
+                <li>Weather-protected storage</li>
+                <li>Sustainable packaging solutions</li>
+              </ul>
+              <a href="contact.html" class="btn-secondary">Learn More</a>
+            </div>
+          </div>
+
+          <div class="project-card">
+            <img src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Pharmaceutical Logistics" class="project-image" />
+            <div class="project-content">
+              <div class="project-meta">
+                <span class="project-tag">Pharmaceutical</span>
+                <span class="project-date">2021-2024</span>
+              </div>
+              <h3>Pharmaceutical Cold Chain Distribution</h3>
+              <p>Established and maintained temperature-controlled logistics networks for pharmaceutical companies, ensuring product integrity from manufacturing facilities to healthcare providers nationwide.</p>
+              <ul class="project-highlights">
+                <li>GDP compliance certification</li>
+                <li>2-8°C temperature maintenance</li>
+                <li>Real-time monitoring systems</li>
+                <li>Nationwide distribution network</li>
+              </ul>
+              <a href="contact.html" class="btn-secondary">Learn More</a>
+            </div>
+          </div>
+        </div> -->
+
+        <div style="text-align: center; margin-top: 4rem; padding: 3rem; background: var(--neutral-light); border-radius: var(--border-radius);">
+          <h2 style="color: var(--primary-navy); margin-bottom: 1rem;">Ready to Start Your Next Project?</h2>
+          <p style="font-size: 1.2rem; color: var(--text-gray); margin-bottom: 2rem; max-width: 600px; margin-left: auto; margin-right: auto;">
+            Let FICI's proven expertise handle your complex logistics challenges. Our track record speaks for itself - from small shipments to large-scale industrial projects.
+          </p>
+          <a href="contact.html" class="btn-primary">Discuss Your Project</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="grid-3">
+        <div>
+          <h4>Contact Information</h4>
+          <p><a href="mailto:sales@firstimperialcargo.com">sales@firstimperialcargo.com</a></p>
+          <p><a href="tel:+6328833-1289">(632) 8833-1289</a></p>
+        </div>
+        <div>
+          <h4>Our Offices</h4>
+          <p>Manila | Cebu | Cavite | Davao</p>
+          <p>Serving the Philippines and beyond</p>
+        </div>
+        <div>
+          <h4>Follow Us</h4>
+          <p>© 2025 First Imperial Cargo, Inc.</p>
+          <p>All rights reserved</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile menu functionality
+    const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+    const siteNav = document.getElementById('siteNav');
+
+    mobileMenuToggle.addEventListener('click', function() {
+      siteNav.classList.toggle('active');
+      
+      // Update button text
+      if (siteNav.classList.contains('active')) {
+        mobileMenuToggle.textContent = '✕';
+        mobileMenuToggle.setAttribute('aria-expanded', 'true');
+      } else {
+        mobileMenuToggle.textContent = '☰';
+        mobileMenuToggle.setAttribute('aria-expanded', 'false');
+      }
+    });
+
+    // Close mobile menu when clicking on nav links
+    const navLinks = document.querySelectorAll('.site-nav a');
+    navLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        siteNav.classList.remove('active');
+        mobileMenuToggle.textContent = '☰';
+        mobileMenuToggle.setAttribute('aria-expanded', 'false');
+      });
+    });
+
+    // Close mobile menu when clicking outside
+    document.addEventListener('click', function(event) {
+      if (!event.target.closest('.site-header')) {
+        siteNav.classList.remove('active');
+        mobileMenuToggle.textContent = '☰';
+        mobileMenuToggle.setAttribute('aria-expanded', 'false');
+      }
+    });
+
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+	
+  const track = document.querySelector('.carousel-track');
+  const slides = Array.from(track.children);
+  const nextBtn = document.querySelector('.carousel-nav.next');
+  const prevBtn = document.querySelector('.carousel-nav.prev');
+  let currentSlide = 0;
+
+  function updateSlide(position) {
+    const slideWidth = slides[0].getBoundingClientRect().width;
+    track.style.transform = `translateX(-${slideWidth * position}px)`;
+  }
+
+  nextBtn.addEventListener('click', () => {
+    currentSlide = (currentSlide + 1) % slides.length;
+    updateSlide(currentSlide);
+  });
+
+  prevBtn.addEventListener('click', () => {
+    currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+    updateSlide(currentSlide);
+  });
+
+  // Responsive adjustment on window resize
+  window.addEventListener('resize', () => updateSlide(currentSlide));
+
+  </script>
+</body>
+</html>
