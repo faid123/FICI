@@ -265,37 +265,32 @@
       margin-top: 2rem;
     }
 
-    .team-member {
-      background: var(--white);
-      padding: 2rem;
-      border-radius: var(--border-radius);
-      box-shadow: var(--shadow-light);
-      text-align: center;
-      transition: var(--transition);
-      border: 2px solid transparent;
-      position: relative;
-      overflow: hidden;
-    }
+	.team-member {
+	  position: relative;
+	  background-size: cover;
+	  background-position: center;
+	  border-radius: var(--border-radius);
+	  padding: 2rem;
+	  color: var(--white);
+	  min-height: 320px;
+	  overflow: hidden;
+	  box-shadow: var(--shadow-light);
+	}
 
-    .team-member::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: 
-        linear-gradient(135deg, rgba(0, 51, 102, 0.05) 0%, rgba(0, 102, 204, 0.05) 100%),
-        url('https://images.unsplash.com/photo-1557804506-669a67965ba0?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80') center/cover;
-      opacity: 0.3;
-      transition: var(--transition);
-      z-index: 1;
-    }
+	.team-member::before {
+	  content: '';
+	  position: absolute;
+	  inset: 0;
+	  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 51, 102, 0.7));
+	  z-index: 1;
+	  border-radius: inherit;
+	}
 
-    .team-member > * {
-      position: relative;
-      z-index: 2;
-    }
+
+	.team-member * {
+	  position: relative;
+	  z-index: 2;
+	}
 
     .team-member:hover::before {
       opacity: 0.4;
@@ -325,6 +320,13 @@
       font-size: 0.95rem;
       line-height: 1.5;
     }
+	
+	.team-member h4,
+	.team-member .role,
+	.team-member p {
+	  color: #fff; /* full white for maximum contrast */
+	}
+
 
     /* === LOCATION CARDS === */
     .location-card {
@@ -351,7 +353,7 @@
     }
 
     .location-card:nth-child(1)::before {
-      background: url('https://images.unsplash.com/photo-1555633514-abcee6ab92e6?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80') center/cover;
+      background: url('assets/head_office.jpg') center/cover;
     }
 
     .location-card:nth-child(2)::before {
@@ -359,7 +361,7 @@
     }
 
     .location-card:nth-child(3)::before {
-      background: url('https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80') center/cover;
+      background: url('assets/cavite.webp') center/cover;
     }
 
     .location-card:nth-child(4)::before {
@@ -676,37 +678,37 @@
           Meet the experienced professionals who guide FICI's operations and drive our commitment to excellence in global logistics.
         </p>
         <div class="team-grid">
-          <div class="team-member">
+          <div class="team-member" style="background-image: url('assets/team/team-bg-1.jpg');">
             <h4>Luis V. Vega</h4>
             <div class="role">President & Chairman</div>
             <p>Visionary founder who established FICI in April 1986 and has guided its growth into a leading logistics provider in the Philippines through hard work and dedication.</p>
           </div>
-          <div class="team-member">
+          <div class="team-member" style="background-image: url('assets/team/team-bg-2.jpg');">
             <h4>Jose J. Vega</h4>
             <div class="role">Vice President, Operations</div>
             <p>Oversees daily operations and ensures seamless execution of logistics services across all branches.</p>
           </div>
-          <div class="team-member">
+          <div class="team-member" style="background-image: url('assets/team/team-bg-3.jpg');">
             <h4>Maria del Carmen R. Vega</h4>
             <div class="role">Treasurer & Legal</div>
             <p>Manages financial operations and legal compliance, ensuring FICI maintains the highest standards of business integrity.</p>
           </div>
-          <div class="team-member">
+          <div class="team-member" style="background-image: url('assets/team/team-bg-4.jpg');">
             <h4>Lorenzo R. Vega</h4>
             <div class="role">Senior Operations Manager</div>
             <p>Coordinates complex logistics operations and maintains quality standards across all service lines.</p>
           </div>
-          <div class="team-member">
+          <div class="team-member" style="background-image: url('assets/team/team-bg-5.jpg');">
             <h4>Ma. Cristy J. Daday</h4>
             <div class="role">Sales Director</div>
             <p>Leads business development initiatives and maintains strong relationships with our global client base.</p>
           </div>
-          <div class="team-member">
+          <div class="team-member" style="background-image: url('assets/team/team-bg-6.jpg');">
             <h4>Jenilo Paul R. Campilan</h4>
             <div class="role">Licensed Customs Broker</div>
             <p>Expert in customs regulations and compliance, ensuring smooth border clearances for international shipments.</p>
           </div>
-		  <div class="team-member">
+		  <div class="team-member" style="background-image: url('assets/team/team-bg-7.jpg');">
             <h4>Soledad M. Bagalay</h4>
             <div class="role">Accounting Manager</div>
             <p>Oversees financial operations, ensuring accurate reporting and compliance with accounting standards.</p>
