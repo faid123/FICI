@@ -34,6 +34,7 @@
       line-height: 1.6;
       color: var(--text-dark);
       background: var(--white);
+      overflow-x: hidden;
     }
 
     /* === TYPOGRAPHY === */
@@ -411,7 +412,7 @@
 		  display: flex;
 		  gap: 1.5rem;
 		  overflow-x: auto;
-		  padding: 1rem 1rem;
+		  padding: 5rem 1rem;
 		  scroll-behavior: smooth;
 		  max-width: 100%;
 		  scroll-snap-type: x mandatory;
@@ -870,41 +871,80 @@
 	}
 
 	/* === TRUSTED CLIENTS === */
-
 	.trusted-clients {
 	  text-align: center;
 	  margin-top: 3rem;
 	}
 
-	.trusted-title {
-	  font-size: 1.6rem;
-	  font-weight: 700;
-	  color: var(--primary-navy);
-	  margin-bottom: 1.5rem;
-	}
+/*  .client-logos {
+    display: flex;
+    gap: 3rem;
+    animation: scrollLogos 30s linear infinite;
+    will-change: transform;
+  }
 
+  .client-logos img:hover {
+    filter: grayscale(0%);
+    transform: scale(1.1);
+  }*/
 
-	.client-logos {
-	  display: flex;
-	  justify-content: center;
-	  gap: 3rem; /* wider spacing between logos */
-	  flex-wrap: wrap;
-	  margin-bottom: 3rem; /* add space below logos */
-	}
+  /*
+  @keyframes scrollLogos {
+    from {
+      transform: translateX(0%);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+    */
 
-	.client-logos img {
-	  height: 70px; /* increased size */
-	  max-width: 120px;
-	  object-fit: contain;
-	  opacity: 0.9;
-	  transition: transform 0.3s ease;
-	}
+  @media (max-width: 768px) {
+    .client-logos {
+      animation-duration: 60s;
+      gap: 1.5rem;
+    }
+  }
 
-	.client-logos img:hover {
-	  transform: scale(1.05);
-	  opacity: 1;
-	}
-	
+ 
+    /* === CLIENT LOGOS === */
+  .client-logos-wrapper {
+    overflow: hidden;
+    width: 100%;
+    position: relative;
+    padding: 0;
+    margin: 0 auto;
+    overflow-x: hidden;
+  }
+
+  .client-logos {
+    display: inline-flex;
+    align-items: center;
+    white-space: nowrap;
+    animation: scrollLogos 40s linear infinite;
+    overflow-x: hidden;
+  }
+
+  .client-logos img {
+    height: 60px;
+    margin: 0 2rem;
+    flex-shrink: 0;
+    overflow-x: hidden;
+  }
+
+  @keyframes scrollLogos {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+
+  .client-logos img:hover {
+    filter: grayscale(0%);
+    transform: scale(1.1);
+  }   
 	
 	/* === SERVICES SECTION === */
         .section-title {
@@ -1165,13 +1205,31 @@
       <div class="container">
         <h2 style="text-align: center; margin-bottom: 3rem;">Why Choose First Imperial Cargo, Inc.</h2>
 		<div class="trusted-clients">
-		  <h3 class="trusted-title">Trusted by Clients</h3>
-		  <div class="client-logos">
-			<img src="assets/nestle-logo.png" alt="Nestle" />
-			<img src="assets/sumitomo-logo.png" alt="Sumitomo" />
-			<img src="assets/kepco-logo.jpg" alt="KEPCO" />
-		  </div>
-		</div>
+      <h3 class="trusted-title">Trusted by Clients</h3>
+      <div class="client-logos-wrapper">
+      <div class="client-logos marquee">
+        <img src="assets/clients/nestle-logo.png" alt="Nestle" />
+        <img src="assets/clients/sumitomo-logo.png" alt="Sumitomo" />
+        <img src="assets/clients/kepco-logo.jpg" alt="KEPCO" />
+        <img src="assets/clients/STARLANES PHILS INC-logo.jpg" alt="Starlanes" />
+        <img src="assets/clients/FIGARO-logo.png" alt="Figaro" />
+        <img src="assets/clients/IK INABATA PHILS-logo.png" alt="Inabata" />
+        <img src="assets/clients/IONICS EMS INC-logo.avif" alt="Ionics" />
+        <img src="assets/clients/KOLON GLOTECH PHILS INC-logo.png" alt="Kolon Glotech" />
+        <img src="assets/clients/MEGAWORLD CORP-logo.png" alt="Megaworld" />
+        <img src="assets/clients/OFFICE OF THE VICE PRESIDENT-logo.png" alt="OVP" />
+        <img src="assets/clients/SAN MIGUEL CORP.-logo.png" alt="San Miguel" />
+        <img src="assets/clients/SANTECHNOLOGY-logo.jpeg" alt="Santechnology" />
+        <img src="assets/clients/SOUTHERN PHILIPPINE FRESH FRUITS INC-logo.png" alt="SPFFI" />
+        <img src="assets/clients/SUMMIT STRAPPING CORP-logo.jpeg" alt="Summit" />
+        <img src="assets/clients/TIMEX PHILS INC-logo.png" alt="Timex" />
+        <img src="assets/clients/TOMS MANUFACTURING-logo.gif" alt="Toms" />
+        <img src="assets/clients/VEER-O- METALS (PHILS) INC-logo.jpeg" alt="Veer-O-Metals" />
+        <img src="assets/clients/YKK ZIPPER PHILS-logo.png" alt="YKK" />
+      </div>
+    </div>
+    </div>
+
 		<div class="features-wrapper">
 		 <div class="features-container">
           <div class="feature-card">
@@ -1536,6 +1594,11 @@
         }
       });
     });
+
+    // Duplicate client logos for seamless scroll
+    const logosContainer = document.querySelector('.client-logos');
+    const logos = logosContainer.innerHTML;
+    logosContainer.innerHTML += logos;
   </script>
 </body>
 </html>
